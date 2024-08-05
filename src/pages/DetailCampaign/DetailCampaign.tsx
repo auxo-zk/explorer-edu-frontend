@@ -1,8 +1,9 @@
-import { BoxIntroducePage, ButtonGroup, Campaign, getCampaign, IconSpinLoading, imagePath } from '@auxo-dev/frontend-common';
+import { BoxIntroducePage, ButtonGroup, Campaign, getCampaign, IconSpinLoading, imagePath, NoData } from '@auxo-dev/frontend-common';
 import { ChevronLeftRounded } from '@mui/icons-material';
 import { Box, Breadcrumbs, Container, Skeleton, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import Overview from './Overview/Overview';
 
 export default function DetailCampaign() {
     const param = useParams();
@@ -82,7 +83,7 @@ export default function DetailCampaign() {
                 </Box>
                 <ButtonGroup
                     sx={{ mt: 3 }}
-                    options={['Overview', 'Fundraising']}
+                    options={['Overview', 'Results']}
                     selected={selected}
                     changeSelected={(val) => {
                         setSelected(val);
@@ -90,6 +91,16 @@ export default function DetailCampaign() {
                     fullWidth={true}
                 />
             </Box>
+            {selected === 0 ? (
+                <Box>
+                    <Overview data={data} />
+                </Box>
+            ) : (
+                <Box>
+                    {/* <CampaignResults campaignId={idCampaign} /> */}
+                    <NoData text="No Data" />
+                </Box>
+            )}
         </Container>
     );
 }
