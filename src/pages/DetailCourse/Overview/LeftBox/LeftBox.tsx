@@ -47,7 +47,7 @@ export default function LeftBox({ data }: { data: Course }) {
                 <Typography variant="h4" mb={1}>
                     Challenges & Risks{' '}
                 </Typography>
-                <Box dangerouslySetInnerHTML={{ __html: data.challengesAndRisk }}></Box>
+                <Box dangerouslySetInnerHTML={{ __html: data.challengeAndRisk }}></Box>
             </Box>
         </Box>
     );
