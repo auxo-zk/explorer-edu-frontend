@@ -63,7 +63,7 @@ export default function Overview({ data }: { data: Campaign }) {
                 </Grid>
             </Grid>
 
-            <ParticipatingCourses campaignId={data.campaignId} timeForJoinCampaign={activeSteps} />
+            <ParticipatingCourses campaign={data} timeForJoinCampaign={activeSteps} />
         </Box>
     );
 }
@@ -76,9 +76,9 @@ function StepView({ steps, activeStep }: { steps: { title: string; content: stri
                     index < activeStep ? (
                         <IconDone sx={{ fontSize: '24px', color: 'primary.light' }} />
                     ) : index == activeStep ? (
-                        <Box sx={{ border: '2px solid', width: '24px', height: '24px', borderRadius: '50%', borderColor: 'primary.light' }} />
+                        <Box sx={{ border: '2px solid', width: '20px', height: '20px', borderRadius: '50%', borderColor: 'primary.light' }} />
                     ) : (
-                        <Box sx={{ border: '1px solid', width: '24px', height: '24px', borderRadius: '50%', borderColor: 'text.primary' }} />
+                        <Box sx={{ border: '2px solid', width: '20px', height: '20px', borderRadius: '50%', borderColor: 'text.primary' }} />
                     );
                 return (
                     <Box key={'step' + item.title + index}>

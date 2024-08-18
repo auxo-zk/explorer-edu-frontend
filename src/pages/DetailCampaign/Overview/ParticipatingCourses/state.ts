@@ -16,6 +16,12 @@ const changeInputInvest = atom(null, (get, set, { id, value }: { id: string; val
         return { ...prev, [id]: value };
     });
 });
+const deleteInputInvest = atom(null, (get, set, id: string) => {
+    set(inputInvest, (prev) => {
+        const { [id]: _, ...rest } = prev;
+        return rest;
+    });
+});
 
 export const useInputInvestCourse = () => useAtom(inputInvest);
 export const useInputInvestCourseValue = () => useAtomValue(inputInvest);
@@ -24,3 +30,4 @@ export const useSetInputInvestCourse = () => useSetAtom(inputInvest);
 export const useTotalInvest = () => useAtomValue(totalInvest);
 export const useLengthInvest = () => useAtomValue(lengthInvest);
 export const useChangeInputInvest = () => useSetAtom(changeInputInvest);
+export const useDeleteInputInvest = () => useSetAtom(deleteInputInvest);

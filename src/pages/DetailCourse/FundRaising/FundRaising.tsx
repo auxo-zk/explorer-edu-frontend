@@ -1,4 +1,4 @@
-import { CampaignFundraising, Course, getFundraisingInfoByProjectId, IconSpinLoading } from '@auxo-dev/frontend-common';
+import { CampaignFundraising, Course, getFundraisingInfoByProjectId, IconSpinLoading, NoData } from '@auxo-dev/frontend-common';
 import { Box } from '@mui/material';
 import React, { useEffect } from 'react';
 import LeftBox from './LeftBox/LeftBox';
@@ -28,8 +28,16 @@ export default function FundRaising({ data }: { data: Course }) {
                 <IconSpinLoading sx={{ fontSize: '100px' }} />
             ) : (
                 <>
-                    <LeftBox dataFundRaising={dataFundRaising} selectedCampaignIndex={selectedCampaignIndex} setSelectedCampaignIndex={setSelectedCampaignIndex} />
-                    <RightBox dataFundRaising={dataFundRaising} selectedCampaignIndex={selectedCampaignIndex} />
+                    {dataFundRaising.length == 0 ? (
+                        <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+                            <NoData text="The course has not participated in any campaigns." />
+                        </Box>
+                    ) : (
+                        <>
+                            <LeftBox dataFundRaising={dataFundRaising} selectedCampaignIndex={selectedCampaignIndex} setSelectedCampaignIndex={setSelectedCampaignIndex} />
+                            <RightBox dataFundRaising={dataFundRaising} selectedCampaignIndex={selectedCampaignIndex} />
+                        </>
+                    )}
                 </>
             )}
         </Box>
