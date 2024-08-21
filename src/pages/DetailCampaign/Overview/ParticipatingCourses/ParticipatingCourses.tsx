@@ -79,6 +79,13 @@ export default function ParticipatingCourses({ campaign, timeForJoinCampaign }: 
                                                         size="small"
                                                         fullWidth
                                                         placeholder="Input amount invest..."
+                                                        InputProps={{
+                                                            endAdornment: (
+                                                                <Typography variant="body2" fontWeight={600}>
+                                                                    {campaign.tokenFunding.symbol}
+                                                                </Typography>
+                                                            ),
+                                                        }}
                                                     />
                                                 </CardCourse>
                                             </Grid>

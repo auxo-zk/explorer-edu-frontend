@@ -1,8 +1,9 @@
-import { CampaignFundraising, Course, getFundraisingInfoByProjectId, IconSpinLoading, NoData } from '@auxo-dev/frontend-common';
+import { CampaignFundraising, Course, getFundraisingInfoByProjectId, getJoinedCampaigns, IconSpinLoading, NoData } from '@auxo-dev/frontend-common';
 import { Box } from '@mui/material';
 import React, { useEffect } from 'react';
 import LeftBox from './LeftBox/LeftBox';
 import RightBox from './RightBox/RightBox';
+import { config } from 'src/layout';
 
 export default function FundRaising({ data }: { data: Course }) {
     const [dataFundRaising, setDataFundRaising] = React.useState<CampaignFundraising[]>([]);
@@ -12,7 +13,7 @@ export default function FundRaising({ data }: { data: Course }) {
     useEffect(() => {
         (async () => {
             try {
-                const response = await getFundraisingInfoByProjectId(data.id);
+                const response = await getFundraisingInfoByProjectId(data.id, data.address, config.getClient());
                 setSelectedCampaignIndex(response.length > 0 ? 0 : null);
                 setDataFundRaising(response);
             } catch (error) {
@@ -28,16 +29,16 @@ export default function FundRaising({ data }: { data: Course }) {
                 <IconSpinLoading sx={{ fontSize: '100px' }} />
             ) : (
                 <>
-                    {dataFundRaising.length == 0 ? (
+                    {/* {dataFundRaising.length == 0 ? (
                         <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
                             <NoData text="The course has not participated in any campaigns." />
                         </Box>
-                    ) : (
-                        <>
-                            <LeftBox dataFundRaising={dataFundRaising} selectedCampaignIndex={selectedCampaignIndex} setSelectedCampaignIndex={setSelectedCampaignIndex} />
-                            <RightBox dataFundRaising={dataFundRaising} selectedCampaignIndex={selectedCampaignIndex} />
-                        </>
-                    )}
+                    ) : ( */}
+                    <>
+                        <LeftBox dataFundRaising={dataFundRaising} selectedCampaignIndex={selectedCampaignIndex} setSelectedCampaignIndex={setSelectedCampaignIndex} />
+                        <RightBox dataFundRaising={dataFundRaising} selectedCampaignIndex={selectedCampaignIndex} />
+                    </>
+                    {/* )} */}
                 </>
             )}
         </Box>
