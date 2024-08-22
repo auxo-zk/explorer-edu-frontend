@@ -3,7 +3,6 @@ import { Box } from '@mui/material';
 import React, { useEffect } from 'react';
 import LeftBox from './LeftBox/LeftBox';
 import RightBox from './RightBox/RightBox';
-import { config } from 'src/layout';
 
 export default function FundRaising({ data }: { data: Course }) {
     const [dataFundRaising, setDataFundRaising] = React.useState<CampaignFundraising[]>([]);
@@ -13,7 +12,7 @@ export default function FundRaising({ data }: { data: Course }) {
     useEffect(() => {
         (async () => {
             try {
-                const response = await getFundraisingInfoByProjectId(data.id, data.address, config.getClient());
+                const response = await getFundraisingInfoByProjectId( data.address);
                 setSelectedCampaignIndex(response.length > 0 ? 0 : null);
                 setDataFundRaising(response);
             } catch (error) {
