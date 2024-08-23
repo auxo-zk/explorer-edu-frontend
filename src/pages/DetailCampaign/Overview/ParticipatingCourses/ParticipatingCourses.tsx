@@ -63,7 +63,7 @@ export default function ParticipatingCourses({ campaign, timeForJoinCampaign }: 
                         <>
                             <Box mt={3}>
                                 <TextField size="small" variant="outlined" color="secondary" label="Search project" name="project_name" sx={{ width: '100%', maxWidth: '380px', mb: 3 }} />
-                                <BoxSummaryInput tokenFund={campaign.tokenFunding} courses={courses} />
+                                <BoxSummaryInput campaignId={campaign.campaignId} tokenFund={campaign.tokenFunding} courses={courses} />
 
                                 <Grid container spacing={3}>
                                     {courses.map((item, index) => {

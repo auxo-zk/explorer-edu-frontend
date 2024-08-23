@@ -4,7 +4,7 @@ import { useLengthInvest, useTotalInvest } from '../state';
 import { Course, formatNumber, TokenInfo, useModalFunction } from '@auxo-dev/frontend-common';
 import ModalConfirmInvest from '../ModalConfirmInvest/ModalConfirmInvest';
 
-export default function BoxSummaryInput({ tokenFund, courses }: { tokenFund: TokenInfo; courses: Course[] }) {
+export default function BoxSummaryInput({ tokenFund, courses, campaignId }: { tokenFund: TokenInfo; courses: Course[]; campaignId: string }) {
     const totalInvest = useTotalInvest();
     const lengthInvest = useLengthInvest();
     const { openModal } = useModalFunction();
@@ -24,7 +24,9 @@ export default function BoxSummaryInput({ tokenFund, courses }: { tokenFund: Tok
             <Button
                 variant="outlined"
                 size="small"
-                onClick={() => openModal({ title: 'Confirm investments', content: <ModalConfirmInvest tokenFund={tokenFund} courses={courses} />, modalProps: { maxWidth: 'xs' } })}
+                onClick={() =>
+                    openModal({ title: 'Confirm investments', content: <ModalConfirmInvest campaignId={campaignId} tokenFund={tokenFund} courses={courses} />, modalProps: { maxWidth: 'xs' } })
+                }
             >
                 Invest
             </Button>
