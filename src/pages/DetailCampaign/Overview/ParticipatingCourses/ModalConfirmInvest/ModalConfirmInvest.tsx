@@ -45,9 +45,9 @@ export default function ModalConfirmInvest({ courses, tokenFund, campaignId }: {
             const exeAction = await writeContractAsync({
                 abi: abiCampaign,
                 address: contractAddress[chainIdSelected].Campaign,
-                functionName: 'fund',
-                // args: [BigInt(campaignId), arrFunds.map((key) => BigInt(courses[Number(key)].id)), arrFunds.map((key) => BigInt(Number(investData[key]) * 10 ** tokenFund.decimals))],
-                args: [BigInt(campaignId), BigInt(courses[0].id), BigInt(Number(investData[0]) * 10 ** tokenFund.decimals)],
+                functionName: 'funds',
+                args: [BigInt(campaignId), arrFunds.map((key) => BigInt(courses[Number(key)].id)), arrFunds.map((key) => BigInt(Number(investData[key]) * 10 ** tokenFund.decimals))],
+                // args: [BigInt(campaignId), BigInt(courses[0].id), BigInt(Number(investData[0]) * 10 ** tokenFund.decimals)],
             });
             console.log({ exeAction });
 

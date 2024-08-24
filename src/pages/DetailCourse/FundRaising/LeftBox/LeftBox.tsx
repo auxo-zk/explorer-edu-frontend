@@ -1,6 +1,6 @@
 import { CampaignFundraising, Course, formatDate, formatNumber } from '@auxo-dev/frontend-common';
 import { Avatar, Box, Grid, MenuItem, Select, Typography } from '@mui/material';
-import { IconARB } from 'crypto-token-icon';
+import { Icon, IconARB } from 'crypto-token-icon';
 import CustomAccordion from 'src/components/CustomAccordion/CustomAccordion';
 
 export default function LeftBox({
@@ -41,15 +41,13 @@ export default function LeftBox({
                             <Typography variant="h6">Funded Amount</Typography>
                             <Box sx={{ display: 'flex', alignItems: 'flex-start', my: 2 }}>
                                 <Avatar src="" alt="" sx={{ width: '36px', height: '36px', p: 0 }}>
-                                    <IconARB sx={{ fontSize: '2.5rem' }} />
+                                    <Icon tokenName={dataFundRaising[selectedCampaignIndex]?.tokenFunding.symbol as any} sx={{ fontSize: '2.5rem' }} />
                                 </Avatar>
                                 <Box sx={{ ml: 1 }}>
                                     <Typography variant="h4" color={'primary.light'}>
                                         {formatNumber(dataFundRaising[selectedCampaignIndex]?.fundedAmount || 0)}
                                     </Typography>
-                                    <Typography variant="body2" color={'text.secondary'}>
-                                        {/* $336.578.854 */}
-                                    </Typography>
+                                    <Typography variant="body2" color={'text.secondary'}></Typography>
                                 </Box>
                             </Box>
                         </Grid>
@@ -57,7 +55,7 @@ export default function LeftBox({
                             <Typography variant="h6">Taget Amount</Typography>
                             <Box sx={{ display: 'flex', alignItems: 'flex-start', my: 2 }}>
                                 <Avatar src="" alt="" sx={{ width: '36px', height: '36px', p: 0 }}>
-                                    <IconARB sx={{ fontSize: '2.5rem' }} />
+                                    <Icon tokenName={dataFundRaising[selectedCampaignIndex]?.tokenFunding.symbol as any} sx={{ fontSize: '2.5rem' }} />
                                 </Avatar>
                                 <Box sx={{ ml: 1 }}>
                                     <Typography variant="h4" color={'primary.light'}>

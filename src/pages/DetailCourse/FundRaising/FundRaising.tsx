@@ -12,7 +12,7 @@ export default function FundRaising({ data }: { data: Course }) {
     useEffect(() => {
         (async () => {
             try {
-                const response = await getFundraisingInfoByProjectId( data.address);
+                const response = await getFundraisingInfoByProjectId(data.address);
                 setSelectedCampaignIndex(response.length > 0 ? 0 : null);
                 setDataFundRaising(response);
             } catch (error) {
@@ -28,16 +28,16 @@ export default function FundRaising({ data }: { data: Course }) {
                 <IconSpinLoading sx={{ fontSize: '100px' }} />
             ) : (
                 <>
-                    {/* {dataFundRaising.length == 0 ? (
+                    {dataFundRaising.length == 0 ? (
                         <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
                             <NoData text="The course has not participated in any campaigns." />
                         </Box>
-                    ) : ( */}
-                    <>
-                        <LeftBox dataFundRaising={dataFundRaising} selectedCampaignIndex={selectedCampaignIndex} setSelectedCampaignIndex={setSelectedCampaignIndex} />
-                        <RightBox dataFundRaising={dataFundRaising} selectedCampaignIndex={selectedCampaignIndex} />
-                    </>
-                    {/* )} */}
+                    ) : (
+                        <>
+                            <LeftBox dataFundRaising={dataFundRaising} selectedCampaignIndex={selectedCampaignIndex} setSelectedCampaignIndex={setSelectedCampaignIndex} />
+                            <RightBox dataFundRaising={dataFundRaising} selectedCampaignIndex={selectedCampaignIndex} course={data} />
+                        </>
+                    )}
                 </>
             )}
         </Box>

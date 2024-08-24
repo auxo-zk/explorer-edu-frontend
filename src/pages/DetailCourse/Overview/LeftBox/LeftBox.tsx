@@ -6,7 +6,7 @@ export default function LeftBox({ data }: { data: Course }) {
     return (
         <Box sx={{ width: '100%' }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Box>
+                {/* <Box>
                     <Typography variant="h6">Claimed Amount</Typography>
                     <Box sx={{ display: 'flex', placeItems: 'center', mt: 1, gap: 1 }}>
                         <IconARB sx={{ fontSize: '40px' }} />
@@ -14,8 +14,8 @@ export default function LeftBox({ data }: { data: Course }) {
                             {formatNumber(data.totalClaimedAmount, { fractionDigits: 2 })}
                         </Typography>
                     </Box>
-                </Box>
-                <Box>
+                </Box> */}
+                {/* <Box>
                     <Typography variant="h6">Funded Amount</Typography>
                     <Box sx={{ display: 'flex', placeItems: 'center', mt: 1, gap: 1 }}>
                         <IconARB sx={{ fontSize: '40px' }} />
@@ -23,7 +23,7 @@ export default function LeftBox({ data }: { data: Course }) {
                             {formatNumber(data.totalFundedAmount, { fractionDigits: 2 })}
                         </Typography>
                     </Box>
-                </Box>
+                </Box> */}
             </Box>
 
             <Typography variant="h6" mt={6}>
