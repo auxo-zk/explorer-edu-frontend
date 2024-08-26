@@ -1,6 +1,6 @@
 import { Box, Divider, IconButton, Typography } from '@mui/material';
 import { useDeleteInputInvest, useInputInvestCourseValue, useTotalInvest } from '../state';
-import { abiCampaign, BN, ButtonLoading, contractAddress, Course, DEC, ErrorExeTransaction, formatNumber, TokenInfo, useSwitchToSelectedChain } from '@auxo-dev/frontend-common';
+import { abiCampaign, BN, ButtonLoading, contractAddress, Course, DEC, ErrorExeTransaction, formatNumber, TokenInfo, useModalFunction, useSwitchToSelectedChain } from '@auxo-dev/frontend-common';
 import { Clear } from '@mui/icons-material';
 import { useAccount, useWriteContract } from 'wagmi';
 import { erc20Abi, parseEther } from 'viem';
@@ -16,6 +16,7 @@ export default function ModalConfirmInvest({ courses, tokenFund, campaignId }: {
     const { address } = useAccount();
     const { chainId, chainIdSelected, switchToChainSelected } = useSwitchToSelectedChain();
     const { writeContractAsync } = useWriteContract();
+    const { closeModal } = useModalFunction();
 
     async function invest() {
         const idtoast = toast.loading('Creating transaction...', { position: 'top-center', type: 'info' });
@@ -54,6 +55,7 @@ export default function ModalConfirmInvest({ courses, tokenFund, campaignId }: {
             const waitTx = await waitForTransactionReceipt(config.getClient(), { hash: exeAction });
             console.log({ waitTx });
             toast.update(idtoast, { render: 'Transaction successfull!', isLoading: false, type: 'success', autoClose: 3000, hideProgressBar: false });
+            closeModal();
         } catch (error) {
             console.error(error);
             if (idtoast) {

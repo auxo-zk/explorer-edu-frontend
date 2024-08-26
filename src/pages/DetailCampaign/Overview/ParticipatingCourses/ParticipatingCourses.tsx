@@ -41,7 +41,7 @@ export default function ParticipatingCourses({ campaign, timeForJoinCampaign }: 
         <>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', placeItems: 'center' }} mt={5.5}>
                 <Typography variant="h6">Participating Projects ({courses.length})</Typography>
-                {timeForJoinCampaign == 0 ? (
+                {/* {timeForJoinCampaign == 0 ? (
                     <Button sx={{ minWidth: '184px' }} variant="contained" onClick={handleOpen}>
                         Apply Project
                     </Button>
@@ -49,7 +49,7 @@ export default function ParticipatingCourses({ campaign, timeForJoinCampaign }: 
                     <Button variant="contained" disabled>
                         {timeForJoinCampaign > 0 ? 'Application Ended' : 'Not time for join campaign'}
                     </Button>
-                )}
+                )} */}
             </Box>
             {loading ? (
                 <Box sx={{ py: 5 }}>

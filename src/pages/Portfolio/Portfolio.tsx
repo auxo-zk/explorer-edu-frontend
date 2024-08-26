@@ -59,7 +59,7 @@ export default function Portfolio() {
     return (
         <Container sx={{ py: 5 }}>
             <BoxIntroducePage title="Portfolio" thumnail="/images/auxo-thumbnail2.png">
-                <TextField size="small" label="Search..." type="text" name="search_committee" color="secondary" sx={{ mt: 3, maxWidth: '479px' }} fullWidth></TextField>
+                {/* <TextField size="small" label="Search..." type="text" name="search_committee" color="secondary" sx={{ mt: 3, maxWidth: '479px' }} fullWidth></TextField> */}
             </BoxIntroducePage>
 
             {loading ? (
@@ -230,10 +230,10 @@ function ClaimableAmount({
                 </Typography>
 
                 <Typography mt={1}>
-                    Total Claimed Revenue: {Number(data?.[1]) / 10 ** decimals + '' || ''} {symbol}
+                    Total Claimed Revenue: {formatNumber(Number(data?.[1]) / 10 ** decimals + '' || '', { fractionDigits: 4 })} {symbol}
                 </Typography>
                 <Typography variant="h6" mt={1}>
-                    Claimable Revenue: {Number(data?.[0]) / 10 ** decimals + '' || ''} {symbol}
+                    Claimable Revenue: {formatNumber(Number(data?.[0]) / 10 ** decimals + '' || '', { fractionDigits: 4 })} {symbol}
                 </Typography>
             </Box>
 
