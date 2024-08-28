@@ -52,8 +52,6 @@ function HaveVoted({ dataFundRaising, course, userAddress }: { dataFundRaising: 
         ],
     });
 
-    console.log(data);
-
     async function voteOrReject(vote: 'Reject' | 'Accept') {
         try {
             await switchToChainSelected();
@@ -77,6 +75,10 @@ function HaveVoted({ dataFundRaising, course, userAddress }: { dataFundRaising: 
                 <IconSpinLoading sx={{ fontSize: '90px' }} />
             </Box>
         );
+    }
+
+    if (BN(bytes32ToString(data?.[1]?.[0]?.descriptionHash || '') || 0).isEqualTo(0)) {
+        return <></>;
     }
 
     return (
